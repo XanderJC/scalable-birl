@@ -27,14 +27,23 @@ inputs,targets,a_dim,s_dim = load_data('CartPole-v1',num_trajs=15)
 # inputs = [num_pairs x 2 x state_dimension]
 # targets = [num_pairs x 2 x action_dimension]
 
-agent = avril(inputs,targets,s_dim,a_dim,state_only=False)
+agent = avril(inputs,targets,s_dim,a_dim,state_only=True)
 
 # You can define the reward to be state-only or state-action depending on use
 # Train for set number of iterations with desired batch-size
-agent.train(iters=5000,batch_size=32)
+agent.train(iters=5000,batch_size=64)
 
 # Now test by rolling out in the live Gym environment
 
 agent.gym_test('CartPole-v1')
+
+```
+
+This can be run by cloning this repository, creating a new virtual environment and running:
+
+```shell
+pip install -r requirements.txt
+
+python AVRIL/model.py
 
 ```

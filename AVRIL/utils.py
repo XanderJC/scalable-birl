@@ -13,10 +13,13 @@ from tqdm import tqdm
 import numpy as onp
 import gym
 import argparse
+from pkg_resources import resource_filename
 
 def load_data(env,num_trajs=None):
 
-    data = onp.load(f'volume/{env}/expert_trajs.npy',allow_pickle=True)
+    path_head = f'{env}/expert_trajs.npy'
+    path = resource_filename("volume",path_head)
+    data = onp.load(path,allow_pickle=True)
     data_trajs   = data.reshape(1)[0]['trajs']
     data_returns = data.reshape(1)[0]['returns']
     data_dict    = data.reshape(1)[0]

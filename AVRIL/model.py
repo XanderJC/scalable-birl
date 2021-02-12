@@ -179,8 +179,8 @@ if __name__ == '__main__':
 
     print(inputs.shape)
     print(targets.shape)
-    print(inputs.shape)
-    model = avril(inputs,targets,s_dim,a_dim,state_only=False)
+
+    model = avril(inputs,targets,s_dim,a_dim,state_only=True)
     model.train(iters=5000)
     model.gym_test('CartPole-v1')
 
