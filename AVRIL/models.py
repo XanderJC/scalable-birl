@@ -2,20 +2,15 @@ import jax.numpy as np
 from jax import grad, jit, vmap, value_and_grad
 from jax import random
 from jax.ops import index, index_add, index_update
-import jax.scipy.special as sc
 from jax.experimental import optimizers
 import jax
 import haiku as hk
 
-import dill
-from copy import deepcopy
 from tqdm import tqdm
 import numpy as onp
 import gym
-import argparse
 
 from utils import load_data
-
 
 def hidden_layers(layers=1,units=64):
     hidden = []
@@ -114,9 +109,9 @@ class avril():
     
         return neg_log_lik + kl + irl_loss
 
-    def train(self,iters=1000,batch_size=64):
+    def train(self,iters=1000,batch_size=64,l_rate=1e-4):
 
-        init_fun, update_fun, get_params = optimizers.adam(0.0001)
+        init_fun, update_fun, get_params = optimizers.adam(l_rate)
         update_fun = jit(update_fun)
         get_params = jit(get_params)
 
@@ -126,7 +121,6 @@ class avril():
 
         loss_grad = jit(value_and_grad(self.elbo))
 
-        batch_size = 128
         len_x = len(self.inputs[:,0,:])
         num_batches = np.ceil(len_x / batch_size)
 
@@ -156,7 +150,7 @@ class avril():
     def gym_test(self,env_test,test_evals=10):
         results = []
         env = gym.make(env_test)
-        for t in tqdm(range(test_evals),desc=f'Testing'):
+        for t in tqdm(range(test_evals),desc='Testing'):
             observation = env.reset()
             done = False
             rewards=[]

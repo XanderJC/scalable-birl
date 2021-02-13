@@ -1,18 +1,5 @@
 import jax.numpy as np
-from jax import grad, jit, vmap, value_and_grad
-from jax import random
-from jax.ops import index, index_add, index_update
-import jax.scipy.special as sc
-from jax.experimental import optimizers
-import jax
-import haiku as hk
-
-import dill
-from copy import deepcopy
-from tqdm import tqdm
 import numpy as onp
-import gym
-import argparse
 from pkg_resources import resource_filename
 
 def load_data(env,num_trajs=None):
