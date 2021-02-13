@@ -47,3 +47,17 @@ pip install -r requirements.txt
 python AVRIL/model.py
 
 ```
+
+### Citing 
+
+If you use this software please consider citing as follows:
+
+```
+@inproceedings{chan2021scalable,
+    title={Scalable Bayesian Inverse Reinforcement Learning},
+    author={Alex James Chan and Mihaela van der Schaar},
+    booktitle={International Conference on Learning Representations},
+    year={2021},
+    url={https://openreview.net/forum?id=4qR3coiNaIv}
+}
+```
