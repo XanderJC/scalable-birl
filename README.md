@@ -57,7 +57,7 @@ If you use this software please cite as follows:
 
 ```
 @inproceedings{chan2021scalable,
-    title={Scalable Bayesian Inverse Reinforcement Learning},
+    title={Scalable {B}ayesian Inverse Reinforcement Learning},
     author={Alex James Chan and Mihaela van der Schaar},
     booktitle={International Conference on Learning Representations},
     year={2021},
