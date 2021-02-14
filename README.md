@@ -7,7 +7,7 @@
 
 Last Updated: 12 February 2021
 
-Code Author: Alex Chan (ajc340@cam.ac.uk)
+Code Author: Alex J. Chan (ajc340@cam.ac.uk)
 
 This repo contains a JAX based implementation of the Approximate Variational Reward Imitation Learning (AVRIL) algorithm. The code is ready to run on the control environments in the OpenAI Gym, with pre-run expert trajectories stored in the volume folder. 
 
@@ -53,7 +53,7 @@ python AVRIL/models.py
 
 ### Citing 
 
-If you use this software please consider citing as follows:
+If you use this software please cite as follows:
 
 ```
 @inproceedings{chan2021scalable,
