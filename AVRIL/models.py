@@ -88,7 +88,7 @@ class avril():
         q_values_next = self.q_network.apply(q_params,key,inputs[:,1,:],self.a_dim,self.decoder_layers,self.decoder_units)
         q_values_next_a = np.take_along_axis(q_values_next,targets[:,1,:].astype(np.int32),axis=1).reshape(len(inputs))
     
-        td = q_values_next_a - q_values_a
+        td = q_values_a - q_values_next_a
     
         r_par = self.encoder.apply(e_params,key,inputs[:,0,:],self.encoder_layers,self.encoder_units,self.state_only,self.a_dim)
 
@@ -97,7 +97,7 @@ class avril():
             log_sds = r_par[:,1].reshape(len(inputs))
         else:
             means = np.take_along_axis(r_par,(targets[:,0,:]).astype(int),axis=1).reshape((len(inputs),))
-            log_sds = np.take_along_axis(r_par,(2+targets[:,0,:]).astype(int),axis=1).reshape((len(inputs),))
+            log_sds = np.take_along_axis(r_par,(self.a_dim+targets[:,0,:]).astype(int),axis=1).reshape((len(inputs),))
     
         irl_loss = -jax.scipy.stats.norm.logpdf(td,means,np.exp(log_sds)).mean()
     
