@@ -14,10 +14,10 @@ Code Author: Alex J. Chan (ajc340@cam.ac.uk)
 
 This repo contains a JAX based implementation of the Approximate Variational Reward Imitation Learning (AVRIL) algorithm. The code is ready to run on the control environments in the OpenAI Gym, with pre-run expert trajectories stored in the volume folder. 
 
-This repo is pip installable - clone it, optionally create a virtual env, and install it (this will automatically install dependencies).
+This repo is pip installable - clone it, optionally create a virtual env, and install it (this will automatically install dependencies):
 
 ```shell
-git clone git@github.com:XanderJC/scalable-birl.git
+git clone https://github.com/XanderJC/scalable-birl.git
 
 cd scalable-birl
 
@@ -54,7 +54,7 @@ agent.gym_test('CartPole-v1')
 
 ```
 
-This example can be run simply using:
+This example can be run simply from the shell using:
 
 ```shell
 python sbirl/models.py
