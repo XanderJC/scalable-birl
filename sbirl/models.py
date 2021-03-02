@@ -10,7 +10,7 @@ from tqdm import tqdm
 import numpy as onp
 import gym
 
-from utils import load_data
+from .utils import load_data
 
 def hidden_layers(layers=1,units=64):
     hidden = []
@@ -111,6 +111,9 @@ class avril():
 
     def train(self,iters=1000,batch_size=64,l_rate=1e-4):
 
+        inputs = self.inputs
+        targets = self.targets 
+        
         init_fun, update_fun, get_params = optimizers.adam(l_rate)
         update_fun = jit(update_fun)
         get_params = jit(get_params)

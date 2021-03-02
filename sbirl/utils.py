@@ -4,8 +4,8 @@ from pkg_resources import resource_filename
 
 def load_data(env,num_trajs=None):
 
-    path_head = f'{env}/expert_trajs.npy'
-    path = resource_filename("volume",path_head)
+    path_head = f'volume/{env}/expert_trajs.npy'
+    path = resource_filename("sbirl",path_head)
     data = onp.load(path,allow_pickle=True)
     data_trajs   = data.reshape(1)[0]['trajs']
     data_returns = data.reshape(1)[0]['returns']
