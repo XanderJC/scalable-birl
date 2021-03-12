@@ -61,7 +61,7 @@ agent.gym_test('CartPole-v1')
 
 We can see the trained agent can now balance the pole:
 
-<img src="imgs/demo.gif" width="240" height="120" />
+<img src="imgs/demo.gif" width="300" height="200" />
 
 
 This example can be run simply from the shell using:
