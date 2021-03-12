@@ -14,6 +14,10 @@ Code Author: Alex J. Chan (ajc340@cam.ac.uk)
 
 This repo contains a JAX based implementation of the Approximate Variational Reward Imitation Learning (AVRIL) algorithm. The code is ready to run on the control environments in the OpenAI Gym, with pre-run expert trajectories stored in the volume folder. 
 
+<img src="imgs/overview.png" height="120" width=auto>
+
+Given demonstrations, AVRIL learns an approximate posterior distributon over the agents reward function as well as an optimal policy with respect to said reward.
+
 This repo is pip installable - clone it, optionally create a virtual env, and install it (this will automatically install dependencies):
 
 ```shell
@@ -53,6 +57,11 @@ agent.train(iters=5000,batch_size=64)
 agent.gym_test('CartPole-v1')
 
 ```
+
+The trained agent can now balance the pole!!!
+
+<img src="imgs/demo.gif" width="120" height="120" />
+
 
 This example can be run simply from the shell using:
 

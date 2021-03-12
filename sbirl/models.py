@@ -9,8 +9,9 @@ import haiku as hk
 from tqdm import tqdm
 import numpy as onp
 import gym
+import imageio
 
-from .utils import load_data
+from sbirl.utils import load_data
 
 
 def hidden_layers(layers=1, units=64):
@@ -318,6 +319,56 @@ class avril:
         print(f"Mean Reward: {mean_res}")
 
         return mean_res
+
+    def gym_gif(self, env_test: str, subsample: int = 10):
+        """
+        Method for rolling out agent in OpenAI gym environment
+        and produce a gif.
+
+        Parameters
+        ----------
+
+        env_test: str
+            The environment to test on e.g. 'CartPole-v1'
+
+        subsample: int, 10
+            Rate at which frames are subsampled for gif.
+
+        Returns
+        -------
+        result: float
+            Return over rollout in the environment
+
+        """
+        env = gym.make(env_test)
+
+        observation = env.reset()
+        done = False
+        rewards = []
+        frames = [] 
+        i=0
+        while not done:
+            if i % subsample ==0:
+                frames.append(env.render(mode = 'rgb_array'))
+            logit = self.q_network.apply(
+                self.q_params,
+                self.key,
+                observation,
+                self.a_dim,
+                self.decoder_layers,
+                self.decoder_units,
+            )
+            action = jax.nn.softmax(logit).argmax()
+            observation, reward, done, info = env.step(int(action))
+            rewards.append(reward)
+            i += 1
+
+        result = sum(rewards)
+        env.close()
+
+        imageio.mimsave('demo.gif', frames)
+
+        return result
 
 
 if __name__ == "__main__":

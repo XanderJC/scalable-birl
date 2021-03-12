@@ -20,6 +20,7 @@ setuptools.setup(
         "jaxlib==0.1.48",
         "numpy==1.19.1",
         "tqdm==4.48.0",
+        "imageio==2.9.0"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
